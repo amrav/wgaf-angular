@@ -320,10 +320,13 @@ module.exports = function (grunt) {
       dist: {
         options: {
           collapseWhitespace: true,
-          conservativeCollapse: true,
           collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
+          removeOptionalTags: true,
+          removeAttributeQuotes: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true
         },
         files: [{
           expand: true,
@@ -411,6 +414,18 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    ngtemplates: {
+      wgafApp: {
+        cwd: '<%= yeoman.app %>',
+        src: 'views/**.html',
+        dest: '.tmp/scripts/templates.js',
+        options: {
+          usemin: '<%= yeoman.dist %>/scripts/scripts.js',
+          htmlmin: '<%= htmlmin.app %>'
+        }
+      }
     }
   });
 
@@ -444,6 +459,7 @@ module.exports = function (grunt) {
     'ngconstant:production',
     'wiredep',
     'useminPrepare',
+    'ngtemplates',
     'concurrent:dist',
     'autoprefixer',
     'concat',
@@ -465,4 +481,5 @@ module.exports = function (grunt) {
   ]);
 
   grunt.loadNpmTasks('grunt-ng-constant');
+  grunt.loadNpmTasks('grunt-angular-templates');
 };
