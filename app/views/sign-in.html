@@ -1,13 +1,14 @@
-<form role="form", id="login-form">
+<form role="form" id="login-form">
+  <p class="text-danger" ng-if="signInError">{{signInError}}</p>
     <div class="form-group">
-        <input type="username", class="form-control", id="login-username", placeholder="Username">
+        <input type="username", class="form-control", id="login-username", placeholder="Username" ng-model="user.username">
         <div class="form-group">
-            <input type="password", class="form-control", id="login-password", placeholder="Password">
+            <input type="password", class="form-control", id="login-password", placeholder="Password" ng-model="user.password">
         </div>
     </div>
     <div class="action">
-        <button type="button" class="btn btn-default btn-lg">Sign in</button>
-        <div>
+        <button ng-disabled="signingIn" type="submit" class="btn btn-default btn-lg" ng-click="signIn()">{{signInText()}}</button>
+        <div ng-hide="signingIn">
             or <a ui-sref="cover.sign-up">Sign up</a>
         </div>
     </div>

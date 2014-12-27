@@ -4,6 +4,8 @@
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+@import "typeahead.scss";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -13,6 +15,7 @@
 
 $black: #000;
 $light-grey: #AAA;
+$white: #FFF;
 
 @mixin helvetica-font {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -23,18 +26,34 @@ body {
     padding-bottom: 20px;
 }
 
+p {
+  font-size: 1.2em;
+}
+
 .container {
     max-width: 800px;
 }
 
 a {
+  cursor: pointer;
+  color: $black;
+  &:visited {
     color: $black;
-    &:hover {
-        color: $black;
-    }
-    &:visited {
-        color: $black;
-    }
+  }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+  &:hover {
+    color: $black;
+    text-decoration: underline;
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
 }
 
 .banner {
@@ -88,4 +107,48 @@ form {
             border-color: $black;
         }
     }
+}
+
+.header {
+  background: $white;
+  font-size: 1.3em;
+  margin: 3.5em;
+  margin-bottom: 5em;
+  h1 {
+    display: inline-block;
+    font-size: 2em;
+  }
+  ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline;
+      margin-left: 1em;
+    }
+  }
+}
+
+form.wgaf-action-form {
+  max-width: 700px;
+  font-size: 1.05em;
+  display: block;
+  margin: auto;
+  &.wgaf-follow-form {
+    max-width: 400px;
+  }
+}
+
+.flash {
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: centre;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }

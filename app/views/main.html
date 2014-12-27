@@ -1,13 +1,15 @@
-<div class="banner">
-    <h1>w.g.a.f</h1>
-    <p>No nonsense web curation tool. Get one email daily, with updates from the people you choose</p>
+<div class="header">
+  <h1>w.g.a.f</h1>
+  <div>
+    Hello, {{user.username}}.
+    <ul class="nav-list pull-right">
+      <li><a ui-sref="main.share">Share link</a></li>
+      <li><a ui-sref="main.follow">Follow</a></li>
+      <li><a ng-click="signout()">Sign out</a></li>
+    </ul>
+  </div>
 </div>
 
 <div ui-view>
-    <div class="action">
-        <button type="button" class="btn btn-default btn-lg" ui-sref=".sign-in">Sign in</button>
-        <div>
-            or <a ui-sref=".sign-up">Sign up</a>
-        </div>
-    </div>
+  <p>Get started by sharing a link, or following a user.</p>
 </div>

@@ -1,0 +1,11 @@
+<form role="form" id="link-form" class="wgaf-action-form wgaf-share-link-form">
+  <div class="form-group">
+    <input ng-model="share.url" type="text" placeholder="Link" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <textarea ng-model="share.summary" rows="2" placeholder="~160 word summary, if you like." maxlength="160" class="form-control"></textarea>
+  </div>
+  <div class="action">
+    <button ng-disabled="sharing" type="button" class="btn btn-default btn-lg" ng-click="shareLink()">g.a.f</button>
+  </div>
+</form>

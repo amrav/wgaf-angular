@@ -1,0 +1,42 @@
+form {
+  input.tt-input, input.tt-hint {
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+}
+
+input.tt-hint {
+  color: #999;
+}
+
+.tt-dropdown-menu {
+    width: 100%;
+    padding: 4px 0;
+}
+
+span.tt-suggestion {
+  width: 100%;
+}
+
+div.tt-suggestion {
+  float: left;
+  width: auto;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-right: 20px;
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor {
+    color: #fff;
+    background-color: #444;
+}
+
+.tt-suggestion p {
+    margin: 0;
+}

@@ -1,0 +1,6 @@
+<form role="form" class="wgaf-action-form wgaf-follow-form form-inline">
+  <div class="form-group">
+    <user-search model="follow.username" valid="follow.valid"/>
+  </div>
+  <button ng-disabled="following || !follow.valid" type="submit" class="btn btn-default btn-lg" ng-click="followUser()">Follow</button>
+</form>
