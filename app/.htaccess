@@ -404,6 +404,14 @@ AddDefaultCharset utf-8
 
 </IfModule>
 
+<IfModule mod_rewrite.c>
+
+    RewriteCond %{HTTP:Accept-Encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}.gz -f
+    RewriteRule ^(.*)$ $1.gz [L]
+
+</IfModule>
+
 # ------------------------------------------------------------------------------
 # | Content transformations                                                    |
 # ------------------------------------------------------------------------------
@@ -538,6 +546,6 @@ FileETag None
 # Enable if you serve a lot of static content but, be aware of the
 # possible disadvantages!
 
-# <IfModule mod_headers.c>
-#    Header set Connection Keep-Alive
-# </IfModule>
+<IfModule mod_headers.c>
+   Header set Connection Keep-Alive
+</IfModule>
