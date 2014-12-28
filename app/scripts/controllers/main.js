@@ -27,14 +27,16 @@ angular.module('wgafApp')
     };
     $scope.shareLink = function() {
       $scope.sharing = true;
+      $log.info($scope.shareForm);
       $http
         .post(API + '/users/' + $scope.user.username + '/links', $scope.share)
         .success(function() {
           flash.success = 'Link added';
           $scope.share = {};
         })
-        .error(function() {
+        .error(function(data) {
           flash.error = 'Something went wrong...';
+          $log.error(data);
         })
         .finally(function() {
           $scope.sharing = false;
