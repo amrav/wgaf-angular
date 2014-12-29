@@ -1,21 +1,21 @@
 <div ui-view>
-  <form role="form" id="signup-form">
+  <form role="form" name="signUpForm" show-validation>
     <p class="text-danger" ng-if="signUpError">{{signUpError}}</p>
     <div class="form-group">
-        <input type="username" class="form-control" id="signup-email" placeholder="Email" ng-model="user.email">
+        <input type="email" class="form-control" placeholder="Email" ng-model="user.email" required="true">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="signup-username" placeholder="Username" ng-model="user.username">
+        <input type="text" class="form-control" placeholder="Username" ng-model="user.username" required="true" pattern="^[A-Za-z][_A-Za-z0-9]*$">
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" id="signup-password" placeholder="Password" ng-model="user.password">
+        <input type="password" class="form-control" placeholder="Password" ng-model="user.password" required="true" ng-minlength="4">
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" id="signup-password-repeat" placeholder="Confirm password" ng-model="user.confirmPassword">
+        <input type="password" class="form-control" placeholder="Confirm password" ng-model="user.confirmPassword" ui-validate="'$value===user.password'" ui-validate-watch="'user.password'">
     </div>
 
     <div class="action">
-        <button ng-disabled="signingUp" type="submit" class="btn btn-default btn-lg" ng-click="signUp()">{{signUpText()}}</button>
+        <button ng-disabled="signingUp || signUpForm.$invalid" type="submit" class="btn btn-default btn-lg" ng-click="signUp()">{{signUpText()}}</button>
         <div ng-hide="signingUp">
             or <a ui-sref="cover.sign-in">Sign in</a>
         </div>

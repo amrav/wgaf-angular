@@ -4,9 +4,9 @@
            required="true"/>
   </div>
   <div class="form-group">
-    <textarea ng-model="share.summary" rows="2" placeholder="~160 word summary, if you like." ng-maxlength="160" class="form-control"></textarea>
+    <textarea ng-model="share.summary" rows="2" placeholder="A short summary, if you like." ng-maxlength="160" class="form-control"></textarea>
   </div>
   <div class="action">
-    <button ng-disabled="sharing || shareForm.$invalid" type="button" class="btn btn-default btn-lg" ng-click="shareLink()">g.a.f</button>
+    <button ng-disabled="sharing || shareForm.$invalid" type="button" class="btn btn-default btn-lg" ng-click="shareLink(shareForm)">g.a.f</button>
   </div>
 </form>

@@ -21,7 +21,8 @@ angular
     'angular-flash.service',
     'angular-flash.flash-alert-directive',
     'siyfion.sfTypeahead',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ui.utils'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider) {
 

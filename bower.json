@@ -17,7 +17,8 @@
     "bootstrap-sass": "~3.0.2",
     "lodash": "~2.4.1",
     "angular-typeahead": "https://github.com/Siyfion/angular-typeahead.git#fb02595f5d3d14791005ec253ba9555c2c49472f",
-    "angular-loading-bar": "~0.6.0"
+    "angular-loading-bar": "~0.6.0",
+    "angular-ui-utils": "bower"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.8",

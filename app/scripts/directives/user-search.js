@@ -7,7 +7,7 @@
  * # userSearchInput
  */
 angular.module('wgafApp')
-  .directive('userSearch', function (API, $log, $compile, $window) {
+  .directive('userSearch', function (API) {
     return {
       restrict: 'E',
       scope: {

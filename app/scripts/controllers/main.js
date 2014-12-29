@@ -10,7 +10,14 @@
 angular.module('wgafApp')
   .controller('MainCtrl', function ($scope, $window, $state, $http, API, $log, flash) {
     $scope.user = angular.fromJson($window.sessionStorage.user);
-    $scope.share = {};
+    $scope.share = {
+      url: null,
+      summary: '',
+      reset: function() {
+        this.url = null;
+        this.summary = null;
+      }
+    };
     $scope.sharing = false;
     $scope.follow = {
       username: null,
@@ -25,14 +32,14 @@ angular.module('wgafApp')
       delete $window.sessionStorage.user;
       $state.go('cover');
     };
-    $scope.shareLink = function() {
+    $scope.shareLink = function(shareForm) {
       $scope.sharing = true;
-      $log.info($scope.shareForm);
       $http
         .post(API + '/users/' + $scope.user.username + '/links', $scope.share)
         .success(function() {
           flash.success = 'Link added';
-          $scope.share = {};
+          $scope.share.reset();
+          shareForm.$setPristine();
         })
         .error(function(data) {
           flash.error = 'Something went wrong...';

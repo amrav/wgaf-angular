@@ -15,6 +15,7 @@
 $black: #000;
 $light-grey: #AAA;
 $white: #FFF;
+$error-red: #a94442;
 
 @mixin helvetica-font {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -77,6 +78,9 @@ button {
     a {
         font-size: 1.3em;
     }
+    form {
+      max-width: 250px;
+    }
 }
 
 @mixin no-borders {
@@ -88,15 +92,19 @@ button {
     -webkit-transition: none;
 }
 
+@mixin dotted-border {
+  @include no-borders;
+  border-bottom: 2px dotted;
+}
+
 form {
     max-width: 400px;
     margin: auto;
     text-align: center;
     .form-control {
         font-size: 1.3em;
-        @include no-borders;
+        @include dotted-border;
         @include helvetica-font;
-        border-bottom: 2px dotted;
         border-color: $light-grey;
         margin-top: 1.5em;
         margin-bottom: 1.5em;
@@ -105,6 +113,12 @@ form {
             border-bottom: 2px dotted;
             border-color: $black;
         }
+    }
+    input,textarea {
+      &.ng-dirty.ng-invalid {
+        border-bottom: 3px dotted;
+        border-color: $error-red;
+      }
     }
 }
 
@@ -140,7 +154,7 @@ form.wgaf-action-form {
 }
 
 .flash {
-  position: absolute;
+  position: fixed;
   z-index: 101;
   top: 0;
   left: 50%;
@@ -150,4 +164,12 @@ form.wgaf-action-form {
   border-top-right-radius: 0px;
   padding-top: 7px;
   padding-bottom: 7px;
+}
+
+.form-control.ng-dirty.ng-invalid {
+  @extend .has-error;
+}
+
+.form-control.ng-dirty.ng-valid {
+  @extend .has-success;
 }
