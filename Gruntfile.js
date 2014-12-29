@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         },
         constants: {
           ENV: 'production',
-          API: 'https://wgaf-staging.herokuapp.com'
+          API: 'https://wgaf.herokuapp.com'
         }
       }
     },
@@ -426,6 +426,14 @@ module.exports = function (grunt) {
           htmlmin: '<%= htmlmin.app %>'
         }
       }
+    },
+
+    'gh-pages': {
+      options: {
+        base: 'dist',
+        dotfiles: true
+      },
+      src: ['**']
     }
   });
 
@@ -482,4 +490,5 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-ng-constant');
   grunt.loadNpmTasks('grunt-angular-templates');
+  grunt.loadNpmTasks('grunt-gh-pages');
 };
