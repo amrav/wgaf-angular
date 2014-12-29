@@ -24,7 +24,8 @@ angular
     'angular-loading-bar',
     'ui.utils'
   ])
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider,
+                    $locationProvider) {
 
     $stateProvider
       .state('main', {
@@ -47,11 +48,11 @@ angular
         controller: 'CoverCtrl'
       })
       .state('cover.sign-in', {
-        url: 'signin',
+        url: 'sign-in',
         templateUrl: 'views/sign-in.html'
       })
       .state('cover.sign-up', {
-        url: 'signup',
+        url: 'sign-up',
         templateUrl: 'views/sign-up.html'
       })
       .state('cover.sign-up.verify', {
@@ -67,6 +68,8 @@ angular
     flashProvider.warnClassnames.push('alert-warn');
     flashProvider.infoClassnames.push('alert-info');
     flashProvider.successClassnames.push('alert-success');
+
+    $locationProvider.html5Mode({enabled: true});
 
   })
   .run(function($state, $window, $rootScope) {
