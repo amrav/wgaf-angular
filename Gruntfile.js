@@ -431,13 +431,21 @@ module.exports = function (grunt) {
       }
     },
 
-    'gh-pages': {
+    buildcontrol: {
       options: {
-        base: 'dist',
-        dotfiles: true
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from %sourceCommit% on branch %sourceBranch%'
       },
-      src: ['**']
+      pages: {
+        options: {
+          remote: 'https://github.com/amrav/wgaf-angular.git',
+          branch: 'gh-pages'
+        }
+      }
     }
+
   });
 
 
@@ -491,7 +499,4 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.loadNpmTasks('grunt-ng-constant');
-  grunt.loadNpmTasks('grunt-angular-templates');
-  grunt.loadNpmTasks('grunt-gh-pages');
 };
