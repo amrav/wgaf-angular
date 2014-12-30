@@ -16,6 +16,7 @@ $black: #000;
 $light-grey: #AAA;
 $white: #FFF;
 $error-red: #a94442;
+$link-blue: #1a0dab;
 
 @mixin helvetica-font {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -47,6 +48,10 @@ a {
   &:hover {
     color: $black;
     text-decoration: underline;
+  }
+  &.home:hover {
+    text-decoration: none;
+    color: lighten($black, 25%);
   }
 }
 
@@ -172,4 +177,24 @@ form.wgaf-action-form {
 
 .form-control.ng-dirty.ng-valid {
   @extend .has-success;
+}
+
+.links-list {
+  padding: 8px;
+  padding-bottom: 0px;
+  border-radius: 2px;
+  display: block;
+  a.link {
+    color: $link-blue;
+  }
+  span.time {
+    color: lighten($black, 70%);
+    font-size: 0.95em;
+    float: right;
+  }
+}
+
+div.dashboard {
+  max-width: 600px;
+  margin: auto;
 }

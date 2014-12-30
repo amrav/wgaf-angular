@@ -11,7 +11,7 @@ angular.module('wgafApp')
   .controller('CoverCtrl', function ($scope, $http, API, $window, $log, $state, flash) {
 
     if ($window.sessionStorage.user) {
-      $state.go('main.share');
+      $state.go('main.dashboard');
     }
 
     $scope.user = {};
@@ -44,7 +44,7 @@ angular.module('wgafApp')
             username: $scope.user.username,
             token: data.token
           });
-          $state.go('main.share');
+          $state.go('main.dashboard');
         })
         .error(function(data) {
           delete $window.sessionStorage.token;

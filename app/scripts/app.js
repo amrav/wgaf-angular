@@ -22,10 +22,11 @@ angular
     'angular-flash.flash-alert-directive',
     'siyfion.sfTypeahead',
     'angular-loading-bar',
-    'ui.utils'
+    'ui.utils',
+    'infinite-scroll',
+    'angularMoment'
   ])
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider,
-                    $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider) {
 
     $stateProvider
       .state('main', {
@@ -34,13 +35,20 @@ angular
         controller: 'MainCtrl',
         abstract: true
       })
-      .state('main.share', {
+      .state('main.dashboard', {
         url: '',
-        templateUrl: 'views/share-link.html'
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
+      .state('main.share', {
+        url: 'share',
+        templateUrl: 'views/share-link.html',
+        controller: 'ShareCtrl'
       })
       .state('main.follow', {
-        url: '',
-        templateUrl: 'views/follow.html'
+        url: 'follow',
+        templateUrl: 'views/follow.html',
+        controller: 'FollowCtrl'
       })
       .state('cover', {
         url: '/',
@@ -68,8 +76,6 @@ angular
     flashProvider.warnClassnames.push('alert-warn');
     flashProvider.infoClassnames.push('alert-info');
     flashProvider.successClassnames.push('alert-success');
-
-    $locationProvider.html5Mode({enabled: true});
 
   })
   .run(function($state, $window, $rootScope) {
