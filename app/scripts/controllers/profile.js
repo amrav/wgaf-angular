@@ -14,12 +14,16 @@ angular.module('wgafApp')
       loading: true
     };
 
+    var caseInsensitiveSort = function(a, b) {
+      return a.toLowerCase().localeCompare(b.toLowerCase());
+    };
+
     $http
       .get(API + '/users/' + $stateParams.username)
       .success(function(data) {
         $scope.profile = data;
-        $scope.profile.followers = data.followers.sort();
-        $scope.profile.following = data.following.sort();
+        $scope.profile.followers = data.followers.sort(caseInsensitiveSort);
+        $scope.profile.following = data.following.sort(caseInsensitiveSort);
         $log.info('profile: ', $scope.profile);
       })
       .error(function(data) {
