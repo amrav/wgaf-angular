@@ -10,9 +10,7 @@
 angular.module('wgafApp')
   .controller('ProfileCtrl', function ($scope, $http, $stateParams, $log, flash, API) {
 
-    $scope.profile = {
-      loading: true
-    };
+    $scope.profile = $scope.profiles[$stateParams.username] || {loading: true};
 
     var caseInsensitiveSort = function(a, b) {
       return a.toLowerCase().localeCompare(b.toLowerCase());
@@ -24,7 +22,7 @@ angular.module('wgafApp')
         $scope.profile = data;
         $scope.profile.followers = data.followers.sort(caseInsensitiveSort);
         $scope.profile.following = data.following.sort(caseInsensitiveSort);
-        $log.info('profile: ', $scope.profile);
+        $scope.profiles[$stateParams.username] = $scope.profile;
       })
       .error(function(data) {
         $log.error(data);
