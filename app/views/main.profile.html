@@ -1,3 +1,5 @@
+<h2 ng-if="profile.username !== user.username">{{profile.username}}</h2>
+
 <div class="following">
   <h4>Following <span ng-show="!profile.loading">({{profile.following.length}}):</h4>
   <p ng-show="profile.loading">Loading...</p>
