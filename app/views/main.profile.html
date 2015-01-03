@@ -1,0 +1,21 @@
+<div class="following">
+  <h4>Following <span ng-show="!profile.loading">({{profile.following.length}}):</h4>
+  <p ng-show="profile.loading">Loading...</p>
+  <p ng-if="profile.following.length === 0"><em>Nobody</em></p>
+  <p ng-if="profile.following.length > 0">
+    <span ng-repeat="username in profile.following">
+      <a ui-sref="main.profile({username: username})">{{username}}</a><span ng-if="!$last" class="comma">, </span>
+    </span>
+  </p>
+</div>
+
+<div class="followers">
+  <h4>Followers <span ng-show="!profile.loading">({{profile.followers.length}}):</h4>
+  <p ng-show="profile.loading">Loading...</p>
+  <p ng-if="profile.followers.length === 0"><em>Nobody</em></p>
+  <p ng-if="profile.followers.length > 0">
+    <span ng-repeat="username in profile.followers">
+      <a ui-sref="main.profile({username: username})">{{username}}</a><span ng-if="!$last" class="comma">, </span>
+    </span>
+  </p>
+</div>

@@ -50,6 +50,11 @@ angular
         templateUrl: 'views/follow.html',
         controller: 'FollowCtrl'
       })
+      .state('main.profile', {
+        url: ':username',
+        templateUrl: 'views/main.profile.html',
+        controller: 'ProfileCtrl'
+      })
       .state('cover', {
         url: '/',
         templateUrl: 'views/cover.html',
