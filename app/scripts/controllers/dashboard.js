@@ -17,6 +17,9 @@ angular.module('wgafApp')
       done: false,
       loadLinks: function() {
         var that = this;
+        if (that.busy) {
+          return;
+        }
         that.busy = true;
         $http.get(API + '/users/' + $scope.user.username + '/links?page=' + that.page +
                   '&limit=40')
@@ -47,4 +50,7 @@ angular.module('wgafApp')
           });
       }
     };
+
+    $scope.loader.loadLinks();
+
   });
