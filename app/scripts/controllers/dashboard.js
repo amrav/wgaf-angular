@@ -8,9 +8,10 @@
  * Controller of the wgafApp
  */
 angular.module('wgafApp')
-  .controller('DashboardCtrl', function ($scope, API, $http, flash, $log) {
+  .controller('DashboardCtrl', function ($scope, API, $http, flash, $log, db) {
+
     $scope.loader = {
-      links: $scope.links,
+      links: db.links,
       busy: false,
       page: 0,
       done: false,
@@ -33,7 +34,7 @@ angular.module('wgafApp')
               _.uniq(_.sortBy(that.links.concat(data), function(link) {
                 return -link.time;
               }), true, 'time');
-            $scope.links = that.links;
+            db.links = that.links;
             that.page += 1;
           })
           .error(function(data) {

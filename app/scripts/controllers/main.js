@@ -10,8 +10,6 @@
 angular.module('wgafApp')
   .controller('MainCtrl', function ($scope, $window, $state, flash) {
     $scope.user = angular.fromJson($window.sessionStorage.user);
-    $scope.profiles = {};
-    $scope.links = [];
     $scope.signout = function() {
       delete $window.sessionStorage.user;
       flash.success = 'Signed out';
