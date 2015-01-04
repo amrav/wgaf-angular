@@ -9,6 +9,6 @@
  */
 angular.module('wgafApp')
   .service('db', function () {
-    this.links = [];
+    this.links = {};
     this.profiles = {};
   });
