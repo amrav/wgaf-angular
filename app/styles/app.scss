@@ -196,8 +196,12 @@ div.dashboard {
   margin: auto;
 }
 
-div.followers,div.following {
+div.followers,div.following,div.recent {
   margin-top: 3em;
+}
+
+div.recent h4 {
+  margin-bottom: 1.5em;
 }
 
 div.followers,div.following p {

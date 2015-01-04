@@ -9,10 +9,15 @@
  */
 angular.module('wgafApp')
   .controller('ProfileCtrl', function ($scope, $http, $stateParams, $log, flash, API,
-                                       db) {
+                                       db, linksLoader) {
 
     $scope.profile = db.profiles[$stateParams.username] ||
       {username: $stateParams.username, loading: true};
+
+    if ($stateParams.username !== $scope.user.username) {
+      $scope.loader = linksLoader;
+      $scope.loader.initialize($stateParams.username);
+    }
 
     var caseInsensitiveSort = function(a, b) {
       return a.toLowerCase().localeCompare(b.toLowerCase());

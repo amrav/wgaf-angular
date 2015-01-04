@@ -21,3 +21,8 @@
     </span>
   </p>
 </div>
+
+<div class="recent" ng-if="profile.username !== user.username">
+  <h4>Recently shared:</h4>
+  <links username="profile.username" infinite="false"/>
+</div>
