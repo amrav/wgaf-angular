@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  var modRewrite = require('connect-modrewrite');
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -103,6 +105,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite(['^[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -393,6 +396,17 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      // copy index.html to 404.html to make HTML5 mode
+      // work properly with gh-pages
+      '404': {
+        expand: true,
+        cwd: '<%= yeoman.dist %>',
+        src: 'index.html',
+        dest: '<%= yeoman.dist %>',
+        rename: function(dest) {
+          return dest + '/404.html';
+        }
       }
     },
 
@@ -490,6 +504,7 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin',
+    'copy:404',
     'ngconstant:development'
   ]);
 

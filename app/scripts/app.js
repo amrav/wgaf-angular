@@ -26,7 +26,8 @@ angular
     'infinite-scroll',
     'angularMoment'
   ])
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider,
+                    $locationProvider) {
 
     $stateProvider
       .state('main', {
@@ -51,7 +52,7 @@ angular
         controller: 'FollowCtrl'
       })
       .state('main.profile', {
-        url: ':username',
+        url: '@:username',
         templateUrl: 'views/main.profile.html',
         controller: 'ProfileCtrl'
       })
@@ -81,6 +82,8 @@ angular
     flashProvider.warnClassnames.push('alert-warn');
     flashProvider.infoClassnames.push('alert-info');
     flashProvider.successClassnames.push('alert-success');
+
+    $locationProvider.html5Mode(true);
 
   })
   .run(function($state, $window, $rootScope) {
