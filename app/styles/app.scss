@@ -175,7 +175,7 @@ form.wgaf-action-form {
   @extend .has-success;
 }
 
-.links-list {
+.link-item {
   padding: 8px;
   padding-bottom: 0px;
   border-radius: 2px;
@@ -191,7 +191,7 @@ form.wgaf-action-form {
   }
 }
 
-div.dashboard {
+div.link-item {
   max-width: 600px;
   margin: auto;
 }

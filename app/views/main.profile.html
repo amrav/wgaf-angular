@@ -1,7 +1,7 @@
 <h2 ng-if="profile.username !== user.username">{{profile.username}}</h2>
 
 <div class="following">
-  <h4>Following <span ng-show="!profile.loading">({{profile.following.length}}):</h4>
+  <h4>Following<span ng-show="profile.following"> ({{profile.following.length}})</span>:</h4>
   <p ng-show="profile.loading">Loading...</p>
   <p ng-if="profile.following.length === 0"><em>Nobody</em></p>
   <p ng-if="profile.following.length > 0">
@@ -12,7 +12,7 @@
 </div>
 
 <div class="followers">
-  <h4>Followers <span ng-show="!profile.loading">({{profile.followers.length}}):</h4>
+  <h4>Followers<span ng-show="profile.followers"> ({{profile.followers.length}})</span>:</h4>
   <p ng-show="profile.loading">Loading...</p>
   <p ng-if="profile.followers.length === 0"><em>Nobody</em></p>
   <p ng-if="profile.followers.length > 0">
@@ -24,5 +24,5 @@
 
 <div class="recent" ng-if="profile.username !== user.username">
   <h4>Recently shared:</h4>
-  <links username="profile.username" infinite="false"/>
+  <links username="profile.username" limit="10"/>
 </div>

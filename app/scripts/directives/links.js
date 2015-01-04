@@ -13,13 +13,12 @@ angular.module('wgafApp')
       restrict: 'E',
       scope: {
         username: '=',
-        infinite: '=?'
+        limit: '=?'
       },
       link: function postLink(scope) {
-        scope.loader = linksLoader;
-        scope.loader.initialize(scope.username);
-        if (angular.isDefined(scope.infinite) && !scope.infinite) {
-          scope.loader.limit = 1;
+        scope.loader = linksLoader.instantiate(scope.username);
+        if (angular.isDefined(scope.limit)) {
+          scope.loader.limit = scope.limit;
         }
       }
     };
