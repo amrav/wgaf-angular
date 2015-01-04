@@ -1,7 +1,7 @@
 <div class="links-list" infinite-scroll="loader.loadLinks()" infinite-scroll-distance="2" infinite-scroll-disabled="loader.busy || loader.done">
 
   <div class="link-item" ng-repeat="link in loader.links">
-    <a class="link" href="{{link.url}}">{{link.url}}</a>
+    <a class="link" href="{{link.url}}" target="_blank">{{link.url}}</a>
     <span ng-if="link.summary"> - <em>{{link.summary}}</em></span>
     <span class="time" am-time-ago="link.time"></span>
     <hr ng-if="!$last"/>
