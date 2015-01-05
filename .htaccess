@@ -412,6 +412,15 @@ AddDefaultCharset utf-8
 
 </IfModule>
 
+# angularjs pushstate (history) support:
+# See http://www.josscrowcroft.com/2012/code/htaccess-for-html5-history-pushstate-url-routing/
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.html [L]
+</IfModule>
+
 # ------------------------------------------------------------------------------
 # | Content transformations                                                    |
 # ------------------------------------------------------------------------------
