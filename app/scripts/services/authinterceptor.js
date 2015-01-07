@@ -8,13 +8,13 @@
  * Factory in the wgafApp.
  */
 angular.module('wgafApp')
-  .factory('authInterceptor', function ($window, $log, $q, $location) {
+  .factory('authInterceptor', function ($log, $q, $location, $localStorage) {
 
     return {
       request: function(config) {
         config.headers = config.headers || {};
-        var user = angular.fromJson($window.sessionStorage.user);
-        if ($window.sessionStorage.user) {
+        var user = $localStorage.user;
+        if (user) {
           config.headers.Authorization = 'Bearer ' + user.token;
         }
         return config;
@@ -22,7 +22,7 @@ angular.module('wgafApp')
       response: function(response) {
         if (response.status === 401) {
           $log.warn('Not authenticated: ', response);
-          $location.path('/signin');
+          $location.path('/sign-in');
         }
         return response || $q.when(response);
       }

@@ -24,7 +24,8 @@ angular
     'angular-loading-bar',
     'ui.utils',
     'infinite-scroll',
-    'angularMoment'
+    'angularMoment',
+    'ngStorage'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider,
                     $locationProvider) {
@@ -86,7 +87,7 @@ angular
     $locationProvider.html5Mode(true);
 
   })
-  .run(function($state, $window, $rootScope) {
+  .run(function($state, $localStorage, $rootScope) {
 
     // authorization for protected states
 
@@ -96,11 +97,15 @@ angular
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
       for (var i = 0; i < needSignIn.length; ++i) {
-        if (needSignIn[i].test(toState.name) && !$window.sessionStorage.user) {
+        if (needSignIn[i].test(toState.name) && !$localStorage.user) {
           event.preventDefault();
           $state.go('cover');
         }
       }
     });
+
+    if ($localStorage.user) {
+      $rootScope.user = $localStorage.user;
+    }
 
   });

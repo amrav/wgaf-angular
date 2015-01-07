@@ -8,9 +8,9 @@
  * Controller of the wgafApp
  */
 angular.module('wgafApp')
-  .controller('CoverCtrl', function ($scope, $http, API, $window, $log, $state, flash) {
+  .controller('CoverCtrl', function ($scope, $http, API, $log, $state, flash, $localStorage) {
 
-    if ($window.sessionStorage.user) {
+    if ($localStorage.user) {
       $state.go('main.dashboard');
     }
 
@@ -40,14 +40,14 @@ angular.module('wgafApp')
       $http
         .post(API + '/auth', $scope.user)
         .success(function(data) {
-          $window.sessionStorage.user = angular.toJson({
+          $localStorage.user = {
             username: $scope.user.username,
             token: data.token
-          });
+          };
           $state.go('main.dashboard');
         })
         .error(function(data) {
-          delete $window.sessionStorage.token;
+          delete $localStorage.token;
           $scope.signingIn = false;
           if (data.message === 'email not verified') {
             $scope.signInError = $scope.user.username + ', please verify your email before signing in.';

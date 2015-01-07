@@ -8,10 +8,11 @@
  * Controller of the wgafApp
  */
 angular.module('wgafApp')
-  .controller('MainCtrl', function ($scope, $window, $state, flash) {
-    $scope.user = angular.fromJson($window.sessionStorage.user);
+  .controller('MainCtrl', function ($scope, $state, flash, $localStorage) {
+    $scope.user = $localStorage.user;
     $scope.signout = function() {
-      delete $window.sessionStorage.user;
+      delete $localStorage.user;
+      delete $scope.user;
       flash.success = 'Signed out';
       $state.go('cover');
     };
