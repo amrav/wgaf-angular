@@ -20,6 +20,7 @@ angular.module('wgafApp')
         if (angular.isDefined(scope.limit)) {
           scope.loader.limit = scope.limit;
         }
+        scope.loader.loadLinks();
       }
     };
   });
