@@ -12,12 +12,14 @@ angular.module('wgafApp')
       restrict: 'E',
       scope: {
         model: '=',
-        valid: '='
+        valid: '=',
+        placeholder: '@?'
       },
       templateUrl: 'views/user-search.html',
       controller: function postLink($scope) {
 
         $scope.valid = false;
+        $scope.placeholder = $scope.placeholder || 'Username';
 
         var responsesCache = [];
 

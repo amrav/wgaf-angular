@@ -31,6 +31,33 @@ angular
                     $locationProvider) {
 
     $stateProvider
+      .state('cover', {
+        url: '/',
+        templateUrl: 'views/cover.html',
+        controller: 'CoverCtrl'
+      })
+      .state('cover.sign-in', {
+        url: 'sign-in',
+        templateUrl: 'views/sign-in.html'
+      })
+      .state('cover.sign-up', {
+        url: 'sign-up',
+        templateUrl: 'views/sign-up.html'
+      })
+      .state('cover.sign-up.verify', {
+        url: '',
+        templateUrl: 'views/verify-email.html'
+      })
+      .state('cover.forgot-password', {
+        url: 'forgot-password',
+        templateUrl: 'views/forgot-password.html',
+        controller: 'ForgotPasswordCtrl'
+      })
+      .state('cover.change-password', {
+        url: '@:username/change-password?token',
+        templateUrl: 'views/change-password.html',
+        controller: 'ChangePasswordCtrl'
+      })
       .state('main', {
         url: '/',
         templateUrl: 'views/main.html',
@@ -56,23 +83,6 @@ angular
         url: '@:username',
         templateUrl: 'views/main.profile.html',
         controller: 'ProfileCtrl'
-      })
-      .state('cover', {
-        url: '/',
-        templateUrl: 'views/cover.html',
-        controller: 'CoverCtrl'
-      })
-      .state('cover.sign-in', {
-        url: 'sign-in',
-        templateUrl: 'views/sign-in.html'
-      })
-      .state('cover.sign-up', {
-        url: 'sign-up',
-        templateUrl: 'views/sign-up.html'
-      })
-      .state('cover.sign-up.verify', {
-        url: '',
-        templateUrl: 'views/verify-email.html'
       });
 
     $urlRouterProvider.otherwise('/');
