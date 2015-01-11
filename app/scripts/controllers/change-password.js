@@ -9,7 +9,6 @@
  */
 angular.module('wgafApp')
   .controller('ChangePasswordCtrl', function ($scope, $log, $stateParams, $http, flash, $state, API) {
-    $log.info("token: ", $stateParams.token);
     $scope.change = {
       password: null,
       confirmPassword: null,

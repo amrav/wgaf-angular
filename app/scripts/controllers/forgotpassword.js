@@ -10,16 +10,15 @@
 angular.module('wgafApp')
   .controller('ForgotPasswordCtrl', function ($scope, $log, API, flash, $http) {
     $scope.forgot = {
-      username: null,
+      email: null,
       valid: false,
       processing: false,
       submit: function() {
         var that = this;
         that.processing = true;
         $http
-          .post(API + '/users/forgot-password', {username: that.username})
+          .post(API + '/users/forgot-password', {email: that.email})
           .success(function() {
-            $log.info('password reset email sent, hopefully');
             flash.success = 'Password reset email sent. Please follow the instructions there.';
             that.reset();
           })
