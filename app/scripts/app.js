@@ -25,10 +25,11 @@ angular
     'ui.utils',
     'infinite-scroll',
     'angularMoment',
-    'ngStorage'
+    'ngStorage',
+    'angular-google-analytics'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider, flashProvider,
-                    $locationProvider) {
+                    $locationProvider, AnalyticsProvider) {
 
     $stateProvider
       .state('cover', {
@@ -96,8 +97,16 @@ angular
 
     $locationProvider.html5Mode(true);
 
+    AnalyticsProvider.setAccount('UA-58070288-1');
+    AnalyticsProvider.trackPages(true);
+    AnalyticsProvider.useAnalytics(true);
+    AnalyticsProvider.useEnhancedLinkAttribution(true);
+    AnalyticsProvider.setPageEvent('$stateChangeSuccess');
+
   })
-  .run(function($state, $localStorage, $rootScope) {
+  /*jshint -W098 */
+  .run(function($state, $localStorage, $rootScope, Analytics) {
+  /*jshint +W098 */
 
     // authorization for protected states
 
