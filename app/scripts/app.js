@@ -101,6 +101,7 @@ angular
     AnalyticsProvider.trackPages(true);
     AnalyticsProvider.useAnalytics(true);
     AnalyticsProvider.useEnhancedLinkAttribution(true);
+    AnalyticsProvider.ignoreFirstPageLoad(true);
     AnalyticsProvider.setPageEvent('$stateChangeSuccess');
 
   })
